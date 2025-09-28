@@ -2,6 +2,10 @@
  * [TODO] Step 0: Import the dependencies, fs and papaparse
  */
 
+const fs = require("fs");
+const Papa = require("papaparse");
+const path = require("path");
+
 /**
  * [TODO] Step 1: Parse the Data
  *      Parse the data contained in a given file into a JavaScript objectusing the modules fs and papaparse.
@@ -9,7 +13,17 @@
  * @param {string} filename - path to the csv file to be parsed
  * @returns {Object} - The parsed csv file of app reviews from papaparse.
  */
-function parseData(filename) {}
+function parseData(filename) {
+	const data = fs.readFileSync(filename, 'utf8');
+	const csv = Papa.parse(data);
+	return csv;
+}
+
+
+/**	Testing
+ * 	const res = parseData(path.join(__dirname, "multilingual_mobile_app_reviews_2025.csv"));
+ * 	console.log(res.data);
+ */
 
 /**
  * [TODO] Step 2: Clean the Data
@@ -26,7 +40,9 @@ function parseData(filename) {}
  * @param {Object} csv - a parsed csv file of app reviews
  * @returns {Object} - a cleaned csv file with proper data types and removed null values
  */
-function cleanData(csv) {}
+function cleanData(csv) {
+	
+}
 
 /**
  * [TODO] Step 3: Sentiment Analysis
